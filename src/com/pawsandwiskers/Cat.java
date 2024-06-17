@@ -95,6 +95,11 @@ public class Cat implements Pet {
 
     }
 
+    @Override
+    public void checkHungerThirst() {
+
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -113,6 +118,31 @@ public class Cat implements Pet {
 
     public void setHungerThirst(int hungerThirst) {
         this.hungerThirst = hungerThirst;
+    }
+
+    @Override
+    public void increasePottyLevel() {
+
+    }
+
+    @Override
+    public void decreasePottyLevel() {
+
+    }
+
+    @Override
+    public void decreaseEnergyLevel(int amount) {
+
+    }
+
+    @Override
+    public void decreaseLife() {
+
+    }
+
+    @Override
+    public void checkNeeds() {
+
     }
 }
 

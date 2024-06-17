@@ -16,7 +16,7 @@ public class Main {
 
         if (newPet != null) {
             shelter.addPet(newPet);
-            System.out.printf("%s Congratulations on adopting!\n", newPet.getName());
+            System.out.printf("Congratulations on adopting %s! ", newPet.getName() + "!");
 
             //Loop for the pet interaction
             boolean running = true;
@@ -41,15 +41,19 @@ public class Main {
                 switch (choice) {
                     case 1:
                         newPet.eat();
+                        newPet.increasePottyLevel();
                         break;
                     case 2:
                         newPet.walk();
+                        newPet.decreasePottyLevel();
                         break;
                     case 3:
                         newPet.exercise();
+                        newPet.decreaseEnergyLevel(10);
                         break;
                     case 4:
                         newPet.play();
+                        newPet.decreaseEnergyLevel(15);
                         break;
                     case 5:
                         newPet.love();
@@ -72,6 +76,12 @@ public class Main {
                         break;
                     default:
                         System.out.println("Invalid choice! Please try again.");
+                }
+                // Periodically check the pet's hunger/thirst status
+                newPet.checkHungerThirst();
+                if (newPet.getLife() <= 0) {
+                    System.out.println("Your pet has died. Game over.");
+                    running = false;
                 }
             }
             scanner.close();
