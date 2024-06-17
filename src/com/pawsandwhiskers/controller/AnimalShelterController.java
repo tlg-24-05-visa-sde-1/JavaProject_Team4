@@ -11,6 +11,9 @@ public class AnimalShelterController {
         welcome();
         Pet newPet = askForTypeAndName();
 
+        /*
+         * Change where a name needs to be inputted
+         */
         if (newPet != null) {
             shelter.addPet(newPet);
             System.out.printf("Congratulations on adopting %s! ", newPet.getName() + "!");
@@ -20,11 +23,25 @@ public class AnimalShelterController {
         }
     }
 
-    private void welcome() {
+    private void welcome() { //welcome banner
         System.out.println("Welcome to Paws and Whiskers Animal Shelter!");
     }
 
+    /*
+     * User is prompted what type of pet they would like to adopt
+     * User will be prompted to name their pet
+     *
+     * case sensitive, .toLowerCase() which will make everything lowercase, so it can match.
+     *
+     * */
+
     private Pet askForTypeAndName() {
+        String puppyArt = " / \\__\n(    @\\___\n /         O\n/   (_____/\n/_/_____/ ";
+        String kittenArt = " /\\_/\\  \n( o.o ) \n > ^ < ";
+
+        System.out.println("\nArf Arf!\n" + puppyArt);
+        System.out.println("\n Meow!\n" + kittenArt);
+
         System.out.println("Would you like to adopt a dog or a cat? ");
         String type = prompter.promptForString().toLowerCase();
 
@@ -42,7 +59,9 @@ public class AnimalShelterController {
             return null;
         }
     }
-
+    /*
+     * Interaction with in the user and console
+     */
     private void interactWithPet(Pet newPet) {
         boolean running = true;
 
@@ -95,6 +114,7 @@ public class AnimalShelterController {
                     break;
                 case 8:
                     newPet.sleep();
+                    newPet.decreaseEnergyLevel(30);
                     break;
                 case 9:
                     newPet.displayStatus();
@@ -106,7 +126,6 @@ public class AnimalShelterController {
                 default:
                     System.out.println("Invalid choice! Please try again.");
             }
-
             newPet.checkHungerThirst();
             newPet.checkEnergyAndNeeds(); // Check energy and if needs have been met
 
