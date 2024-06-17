@@ -1,11 +1,18 @@
 package com.pawsandwhiskers;
 
-class PetFactory {
+public class PetFactory {
     private PetFactory() {     //private ctor to prevent outside instantiation
     }
-
-    //need to have the type of pet selected, Animal enum (either Dog or Cat) determine which we create.
-    //also need a null check to throw an error.
-
-
+    //do we need an exception here since we're dealing with Enums?  Maybe for String name?
+    //may need to convert from String to Enum?
+    public static Pet createPet(Animal animal, String name){
+        Pet pet = null;
+         if (animal.equals(Animal.DOG)){
+             pet = new Dog(name);
+         }
+         else{
+             pet = new Cat(name);
+         }
+         return pet;
+    }
 }

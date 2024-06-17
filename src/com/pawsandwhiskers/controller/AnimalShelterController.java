@@ -33,9 +33,11 @@ public class AnimalShelterController {
             String name = prompter.promptForString();
 
             if (type.equals("cat")) {
-                return new Cat(name);
+                return
+                PetFactory.createPet(Animal.CAT, name);
             } else { // Assume type.equals("dog")
-                return new Dog(name);
+                return
+                PetFactory.createPet(Animal.DOG, name);
             }
         } else {
             System.out.println("We currently only have Dogs and Cats for adoption at the moment.");
