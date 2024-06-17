@@ -1,148 +1,73 @@
 package com.pawsandwiskers;
 
-public class Cat implements Pet {
-    private String name;
-    private int energy;
-    private int life;
-    private int potty;
-    private int hungerThirst;
+public class Cat extends Pet {
 
-    //constructors
     public Cat(String name) {
-        setName(name);
+        super(name);
     }
 
-    public Cat(String name, int energy, int life, int potty) {
-        setName(name);
-        setEnergy(energy);
-        setLife(life);
-        setPotty(potty);
+    public Cat(String name, int energy, int life, int potty, int hungerThirst) {
+        super(name, energy, life, potty, hungerThirst);
     }
 
     @Override
     public void eat() {
-
-
+        setHungerThirst(Math.max(getHungerThirst() - 10, 0));
+        System.out.println(getName() + " is eating!");
+        increaseLife();
     }
 
     @Override
     public void walk() {
-
+        setEnergy(Math.max(getEnergy() - 10, 0));
+        setPotty(Math.max(getPotty() - 10, 100));
+        System.out.println(getName() + " is walking.");
+        increaseLife();
     }
 
     @Override
     public void exercise() {
-
+        setEnergy(Math.max(getEnergy() - 15, 0));
+        System.out.println(getName() + " is exercising.");
     }
 
     @Override
     public void play() {
-
+        setEnergy(Math.max(getEnergy() - 20, 0));
+        System.out.println(getName() + " is playing.");
     }
 
     @Override
     public void love() {
-
+        setEnergy(Math.max(getEnergy() + 5, 100));
+        System.out.println(getName() + " is being loved ❤ ");
+        increaseLife();
     }
 
     @Override
     public void cuddle() {
-
+        setEnergy(Math.min(100, getEnergy() + 10)); // Increase energy by 10, capped at 100
+        System.out.println(getName() + " is being cuddled.");
     }
 
     @Override
     public void pet() {
-
+        setEnergy(Math.max(getEnergy() + 5, 100));
+        System.out.println(getName() + " is being petted.");
+        increaseLife();
     }
 
     @Override
     public void die() {
-
+        if (getLife() <= 0) {
+            System.out.println(getName() + " died ﮩ٨ـﮩﮩ٨ـ♡ﮩ٨ـﮩﮩ٨ـ");
+        }
     }
 
     @Override
     public void sleep() {
-
-    }
-
-    @Override
-    public String getName() {
-        return "";
-    }
-
-    @Override
-    public int getEnergy() {
-        return 0;
-    }
-
-    @Override
-    public int getLife() {
-        return 0;
-    }
-
-    @Override
-    public int getPotty() {
-        return 0;
-    }
-
-    @Override
-    public int getHungerThirst() {
-        return 0;
-    }
-
-    @Override
-    public void displayStatus() {
-
-    }
-
-    @Override
-    public void checkHungerThirst() {
-
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setEnergy(int energy) {
-        this.energy = energy;
-    }
-
-    public void setLife(int life) {
-        this.life = life;
-    }
-
-    public void setPotty(int potty) {
-        this.potty = potty;
-    }
-
-    public void setHungerThirst(int hungerThirst) {
-        this.hungerThirst = hungerThirst;
-    }
-
-    @Override
-    public void increasePottyLevel() {
-
-    }
-
-    @Override
-    public void decreasePottyLevel() {
-
-    }
-
-    @Override
-    public void decreaseEnergyLevel(int amount) {
-
-    }
-
-    @Override
-    public void decreaseLife() {
-
-    }
-
-    @Override
-    public void checkNeeds() {
-
+        setEnergy(Math.max(getEnergy() + 20, 100));
+        System.out.println(getName() + " is sleeping.");
+        increaseLife();
     }
 }
-
