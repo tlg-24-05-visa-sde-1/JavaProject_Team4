@@ -70,4 +70,12 @@ public class Dog extends Pet {
         System.out.println(getName() + " is sleeping.");
         increaseLife();
     }
+
+    public void setEnergyLevel(int i) {
+    }
+
+    public int getEnergyLevel() {
+        return 100;
+    }
 }
+
