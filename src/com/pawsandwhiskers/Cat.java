@@ -58,7 +58,7 @@ public class Cat extends Pet {
 
     @Override
     public void sleep() {
-        setEnergy(Math.max(getEnergy() + 20, 100));
+        setEnergy(Math.max(getEnergy() + 40, 100));
         System.out.println(getName() + " finds a cozy spot and goes to sleep.");
         increaseLife();
     }
