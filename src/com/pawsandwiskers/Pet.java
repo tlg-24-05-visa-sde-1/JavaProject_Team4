@@ -18,5 +18,13 @@ public interface Pet {
     int getHungerThirst();
     void displayStatus();
 
+    //methods to update pet attributes
+    void setEnergy(int energy);
+    void setLife(int life);
+    void setPotty(int potty);
+    void setHungerThirst(int hungerThirst);
 
+//    // death related methods
+//    boolean isAlive();
+//    void markAsDeceased();
 }

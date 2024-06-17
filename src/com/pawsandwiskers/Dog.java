@@ -23,46 +23,49 @@ public class Dog implements Pet {
 
     @Override
     public void eat() {
-
+        System.out.println(getName() + " is eating.");
     }
 
     @Override
     public void walk() {
-
+        System.out.println(getName() + " is walking.");
     }
 
     @Override
     public void exercise() {
-
+        System.out.println(getName() + " is exercising.");
     }
 
     @Override
     public void play() {
-
+        System.out.println(getName() + " is playing.");
     }
 
     @Override
     public void love() {
-
+        System.out.println(getName() + " is being loved ❤ ");
     }
 
     @Override
     public void cuddle() {
-
+        System.out.println(getName() + " is being cuddled.");
     }
 
     @Override
     public void pet() {
+        System.out.println(getName() + " is being petted.");
 
     }
 
     @Override
     public void die() {
+        System.out.println(getName() + " died ﮩ٨ـﮩﮩ٨ـ♡ﮩ٨ـﮩﮩ٨ـ");
 
     }
 
     @Override
     public void sleep() {
+        System.out.println(getName() + " is sleeping.");
 
     }
 
