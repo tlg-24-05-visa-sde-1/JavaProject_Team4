@@ -6,7 +6,7 @@ import java.util.List;
 public class AnimalShelter {
     private List<Pet> pets = new ArrayList<>();
 
-    public Pet askForTypeOfPet(Prompter prompter, String name) {
+    public Pet askForTypeOfPet(Prompter prompter, String petName) {
         String puppyArt = " / \\__\n(    @\\___\n /         O\n/   (_____/\n/_/_____/ ";
         String kittenArt = " /\\_/\\  \n( o.o ) \n > ^ < ";
 
@@ -14,9 +14,12 @@ public class AnimalShelter {
         System.out.println("\nArf Arf!\n" + puppyArt);
         System.out.println("\n Meow!\n" + kittenArt);
 
+        System.out.println("What would you like to name your new pet?");
+        String name = prompter.promptForString();
+
         String type = prompter.promptForString().toLowerCase();
 
-        if(type.equals("cat")){
+        if (type.equals("cat")) {
             return new Cat(name);
         } else if (type.equals("dog")) {
             return new Dog(name);

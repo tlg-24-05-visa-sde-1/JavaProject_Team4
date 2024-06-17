@@ -1,10 +1,7 @@
 package com.pawsandwhiskers.controller;
 
-import com.pawsandwhiskers.AnimalShelter;
-import com.pawsandwhiskers.Pet;
+import com.pawsandwhiskers.*;
 import com.pawsandwhiskers.client.ConsolePrompter;
-import com.pawsandwhiskers.Prompter;
-import com.pawsandwhiskers.Dog;
 
 public class AnimalShelterController {
     private final Prompter prompter = new ConsolePrompter();
@@ -12,8 +9,7 @@ public class AnimalShelterController {
 
     public void execute() {
         welcome();
-        String petName = shelter.namePet(prompter);
-        Pet newPet = shelter.askForTypeOfPet(prompter, petName);
+        Pet newPet = askForTypeAndName();
 
         if (newPet != null) {
             shelter.addPet(newPet);
@@ -26,6 +22,25 @@ public class AnimalShelterController {
 
     private void welcome() {
         System.out.println("Welcome to Paws and Whiskers Animal Shelter!");
+    }
+
+    private Pet askForTypeAndName() {
+        System.out.println("Would you like to adopt a dog or a cat? ");
+        String type = prompter.promptForString().toLowerCase();
+
+        if (type.equals("cat") || type.equals("dog")) {
+            System.out.println("What would you like to name your new pet?");
+            String name = prompter.promptForString();
+
+            if (type.equals("cat")) {
+                return new Cat(name);
+            } else { // Assume type.equals("dog")
+                return new Dog(name);
+            }
+        } else {
+            System.out.println("We currently only have Dogs and Cats for adoption at the moment.");
+            return null;
+        }
     }
 
     private void interactWithPet(Pet newPet) {
