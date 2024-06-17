@@ -8,7 +8,11 @@ public class AnimalShelter {
     private List<Pet> pets = new ArrayList<>();
 
     public void welcome(){
+        String puppyArt = " / \\__\n(    @\\___\n /         O\n/   (_____/\n/_/_____/ ";
+        String kittenArt = " /\\_/\\  \n( o.o ) \n > ^ < ";
         System.out.println("Welcome to Paws and Whiskers Animal Shelter!");
+        System.out.println("\nArf Arf!\n" + puppyArt);
+        System.out.println("\n Meow!\n" + kittenArt);
     }
 
     public Pet askForTypeOfPet(String name){
