@@ -1,7 +1,7 @@
-package com.pawsandwiskers.client;
+package com.pawsandwhiskers.client;
 
-import com.pawsandwiskers.AnimalShelter;
-import com.pawsandwiskers.Pet;
+import com.pawsandwhiskers.AnimalShelter;
+import com.pawsandwhiskers.Pet;
 
 import java.util.Scanner;
 
