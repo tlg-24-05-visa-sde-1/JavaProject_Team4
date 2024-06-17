@@ -2,11 +2,11 @@ package com.pawsandwhiskers;
 
 public class Cat extends Pet {
 
-    public Cat(String name) {
+   Cat(String name) {
         super(name);
     }
 
-    public Cat(String name, int energy, int life, int potty, int hungerThirst) {
+    Cat(String name, int energy, int life, int potty, int hungerThirst) {
         super(name, energy, life, potty, hungerThirst);
     }
 
