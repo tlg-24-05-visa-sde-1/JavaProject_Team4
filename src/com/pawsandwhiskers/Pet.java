@@ -1,4 +1,4 @@
-package com.pawsandwiskers;
+package com.pawsandwhiskers;
 
 public abstract class Pet {
     private String name;
