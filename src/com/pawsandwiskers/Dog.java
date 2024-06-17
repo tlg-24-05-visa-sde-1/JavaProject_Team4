@@ -17,7 +17,6 @@ public class Dog extends Pet {
         increaseLife();
     }
 
-    @Override
     public void walk() {
         setEnergy(Math.max(getEnergy() - 10, 0));
         setPotty(Math.max(getPotty() - 10, 100));
@@ -60,13 +59,13 @@ public class Dog extends Pet {
     @Override
     public void die() {
         if (getLife() <= 0) {
-            System.out.println(getName() + " died ﮩ٨ـﮩﮩ٨ـ♡ﮩ٨ـﮩﮩ٨ـ");
+            System.out.println(getName() + " died 🐾");
         }
     }
 
     @Override
     public void sleep() {
-        setEnergy(Math.max(getEnergy() + 20, 100));
+        setEnergy(Math.max(getEnergy() - 20, 0)); // Decrease energy by 20 when sleeping
         System.out.println(getName() + " is sleeping.");
         increaseLife();
     }

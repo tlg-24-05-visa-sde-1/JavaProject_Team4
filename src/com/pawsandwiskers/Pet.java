@@ -1,30 +1,34 @@
 package com.pawsandwiskers;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public abstract class Pet {
     private String name;
-    private int energy;
     private int life;
     private int potty;
     private int hungerThirst;
+    private Map<String, Integer> attributes;
 
     public Pet(String name) {
         this.name = name;
-        this.energy = 50;
         this.life = 2;
         this.potty = 0;
         this.hungerThirst = 20;
+        this.attributes = new HashMap<>();
+        this.attributes.put("energy", 50); // Initialize energy to 50
     }
 
     public Pet(String name, int energy, int life, int potty, int hungerThirst) {
         this.name = name;
-        this.energy = energy;
         this.life = life;
         this.potty = potty;
         this.hungerThirst = hungerThirst;
+        this.attributes = new HashMap<>();
+        this.attributes.put("energy", energy); // Initialize energy
     }
 
     public abstract void eat();
-    public abstract void walk();
     public abstract void exercise();
     public abstract void play();
     public abstract void love();
@@ -38,7 +42,7 @@ public abstract class Pet {
     }
 
     public int getEnergy() {
-        return energy;
+        return attributes.get("energy");
     }
 
     public int getLife() {
@@ -54,9 +58,37 @@ public abstract class Pet {
     }
 
     public void displayStatus() {
-        String hearts = "❤".repeat(life) + "♡".repeat(3 - life);
+        int displayedLife = calculateDisplayedLife();
+        String hearts = "❤".repeat(displayedLife) + "♡".repeat(3 - displayedLife);
         System.out.printf("%s's status - Energy: %d, Life: %s, Potty: %d, Hunger/Thirst: %d\n",
                 getName(), getEnergy(), hearts, getPotty(), getHungerThirst());
+    }
+
+    private int calculateDisplayedLife() {
+        int currentLife = getLife();
+        int currentEnergy = getEnergy();
+
+        // Adjust life display based on conditions
+        if (currentEnergy > 100 && !hasBeenWalkedExercisedOrPlayed()) {
+            currentLife--; // Pet loses a heart due to excessive energy and lack of activity
+        }
+
+        // Ensure life is within valid range (0 to 3)
+        return Math.max(0, Math.min(currentLife, 3));
+    }
+
+    private boolean hasBeenWalkedExercisedOrPlayed() {
+        return getEnergy() < 100 || getPotty() < 100 || getHungerThirst() < 100;
+    }
+
+
+    private int getEffectiveLife() {
+        // If energy is over 100, decrease the displayed life
+        if (getEnergy() > 100) {
+            return Math.max(0, life - 1);
+        } else {
+            return life;
+        }
     }
 
     public void checkHungerThirst() {
@@ -72,13 +104,10 @@ public abstract class Pet {
 
     public void setEnergy(int energy) {
         if (energy > 100) {
-            this.energy = 100;
-            life--; // Pet loses a heart if energy exceeds 100
-            if (life <= 0) {
-                die(); // Pet dies if life reaches 0
-            }
+            this.attributes.put("energy", 100);
+            dieFromExcessiveEnergy(); // Handle death from excessive energy
         } else {
-            this.energy = Math.max(0, energy);
+            this.attributes.put("energy", Math.max(0, energy));
         }
     }
 
@@ -104,7 +133,8 @@ public abstract class Pet {
     }
 
     public void decreaseEnergyLevel(int amount) {
-        energy = Math.max(energy - amount, 0);
+        int newEnergy = getEnergy() - amount;
+        setEnergy(newEnergy);
         System.out.println(getName() + " is feeling tired after exercising.");
     }
 
@@ -125,10 +155,28 @@ public abstract class Pet {
         }
     }
 
+    public void checkEnergyAndNeeds() {
+        if (getEnergy() >= 100 && !hasBeenWalkedExercisedOrPlayed()) {
+            life--;
+            System.out.println(getName() + " lost a heart due to excessive energy and lack of activity.");
+            if (life <= 0) {
+                die();
+            }
+        }
+    }
+
     protected void increaseLife() {
         if (life < 3) {
             life++;
             System.out.println(name + " has gained a life.");
+        }
+    }
+
+    private void dieFromExcessiveEnergy() {
+        life--;
+        System.out.println(name + " died due to excessive energy and lack of food.");
+        if (life <= 0) {
+            die();
         }
     }
 }

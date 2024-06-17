@@ -2,28 +2,19 @@ package com.pawsandwiskers;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class AnimalShelter {
     private List<Pet> pets = new ArrayList<>();
 
-    public void welcome(){
-
-        System.out.println("Welcome to Paws and Whiskers Animal Shelter!");
-
-    }
-
-    public Pet askForTypeOfPet(String name){
+    public Pet askForTypeOfPet(Prompter prompter, String name) {
         String puppyArt = " / \\__\n(    @\\___\n /         O\n/   (_____/\n/_/_____/ ";
         String kittenArt = " /\\_/\\  \n( o.o ) \n > ^ < ";
 
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Would you like to adopt a dog or a cat? ");
-
         System.out.println("\nArf Arf!\n" + puppyArt);
         System.out.println("\n Meow!\n" + kittenArt);
 
-        String type = scanner.nextLine().toLowerCase();
+        String type = prompter.promptForString().toLowerCase();
 
         if(type.equals("cat")){
             return new Cat(name);
@@ -35,17 +26,16 @@ public class AnimalShelter {
         }
     }
 
-    public String namePet(){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("What would you like to name your new pet");
-        return scanner.nextLine();
+    public String namePet(Prompter prompter) {
+        System.out.println("What would you like to name your new pet?");
+        return prompter.promptForString();
     }
 
-    public void addPet(Pet pet){
+    public void addPet(Pet pet) {
         pets.add(pet);
     }
 
-    public List<Pet> getPets(){
+    public List<Pet> getPets() {
         return pets;
     }
 }
