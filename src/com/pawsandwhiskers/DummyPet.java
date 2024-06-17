@@ -15,7 +15,6 @@ class DummyPet extends Pet{
 
     }
 
-    @Override
     public void walk() {
 
     }
