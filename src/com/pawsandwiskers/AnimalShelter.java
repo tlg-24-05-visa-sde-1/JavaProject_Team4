@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/* TEST CODE FROM KATIE
+*
+ */
+
 public class AnimalShelter {
     private List<Pet> pets = new ArrayList<>();
 
