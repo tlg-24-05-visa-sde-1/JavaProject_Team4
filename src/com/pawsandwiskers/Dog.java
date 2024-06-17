@@ -23,7 +23,7 @@ public class Dog implements Pet {
 
     @Override
     public void eat() {
-        System.out.println(getName() + " is eating.");
+        System.out.println(getName() + " is eating!");
     }
 
     @Override
