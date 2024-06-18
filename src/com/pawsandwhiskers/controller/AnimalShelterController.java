@@ -68,10 +68,24 @@ public class AnimalShelterController {
 //            return null;
 //        }
 //    }
+    /*
+    * This will keep prompting the user to select type of pet (dog and cat only)
+    * exception wss added to it to not allow anything other than cat/ dog
+    * */
 
     private Pet askForTypeAndName() {
-        String puppyArt = " / \\__\n(    @\\___\n /         O\n/   (_____/\n/_/_____/ ";
-        String kittenArt = " /\\_/\\  \n( o.o ) \n > ^ < ";
+        String puppyArt =
+                " ,'.-.'. \n" +
+                "'\\~ o/` ,,\n" +
+                " { @ } f\n" +
+                " /`-'\\$ \n" +
+                "(_/-\\_)  ";
+        String kittenArt =
+                "  /\\_/\\  (\n" +
+                        " ( ^.^ ) _)\n" +
+                        "   \\\"/  (\n" +
+                        " ( | | )\n" +
+                        "(__d b__) ";
 
         System.out.println("\nArf Arf!\n" + puppyArt);
         System.out.println("\n Meow!\n" + kittenArt);
@@ -112,10 +126,9 @@ public class AnimalShelterController {
         }
     }
 
-
-
     /*
      * Interaction with in the user and console
+     * Cats do not go on walks, so walk is skipped on console, user does not see that is cat is selected
      */
     private void interactWithPet(Pet newPet) {
         boolean running = true;

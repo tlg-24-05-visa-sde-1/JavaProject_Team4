@@ -31,8 +31,8 @@ public class Cat extends Pet {
 
     @Override
     public void love() {
-        setEnergy(Math.max(getEnergy() + 5, 100));
-        System.out.println(getName() + " purrs and enjoys some affection ❤ ");
+        setEnergy(Math.min(getEnergy() + 5, 100));
+        System.out.println(getName() + " is being loved ❤ ");
         increaseLife();
     }
 

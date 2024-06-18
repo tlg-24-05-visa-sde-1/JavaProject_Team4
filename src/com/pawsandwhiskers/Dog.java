@@ -14,19 +14,30 @@ public class Dog extends Pet {
     public void eat() {
         setHungerThirst(Math.max(getHungerThirst() - 10, 0));
         System.out.println(getName() + " is eating!");
+        System.out.println("    ,    /-.\n" +
+                "   ((___/ __>\n" +
+                "   /      }\n" +
+                "   \\ .--.(    ___\n" +
+                "    \\\\   \\\\  /___\\");
         increaseLife();
     }
 
     public void walk() {
         setEnergy(Math.max(getEnergy() - 10, 0));
-        setPotty(Math.max(getPotty() - 10, 0)); // Decrease potty level by 10
+        setPotty(Math.min(getPotty() - 10, 0)); // Decrease potty level by 10
         System.out.println(getName() + " is walking.");
+        System.out.println(" " +
+                "/ \\__\n" +
+                "(    @\\___\n" +
+                " /         O\n" +
+                "/   (_____/\n" +
+                "/_/_____/ \n");
         increaseLife();
     }
 
     @Override
     public void exercise() {
-        setEnergy(Math.max(getEnergy() - 15, 0));
+        setEnergy(Math.max(getEnergy() - 10, 0));
         System.out.println(getName() + " is exercising.");
     }
 
@@ -38,7 +49,7 @@ public class Dog extends Pet {
 
     @Override
     public void love() {
-        setEnergy(Math.max(getEnergy() + 5, 100));
+        setEnergy(Math.min(getEnergy() + 5, 100));
         System.out.println(getName() + " is being loved ❤ ");
         increaseLife();
     }
@@ -51,7 +62,7 @@ public class Dog extends Pet {
 
     @Override
     public void pet() {
-        setEnergy(Math.max(getEnergy() + 5, 100));
+        setEnergy(Math.min(getEnergy() + 5, 100));
         System.out.println(getName() + " is being petted.");
         increaseLife();
     }
@@ -65,8 +76,8 @@ public class Dog extends Pet {
 
     @Override
     public void sleep() {
-        setEnergy(Math.max(getEnergy() - 20, 0)); // Decrease energy by 20 when sleeping
-        System.out.println(getName() + " is sleeping.");
+        setEnergy(Math.max(getEnergy() + 20, 100));
+        System.out.println(getName() + " is sleeping");
         increaseLife();
     }
 
