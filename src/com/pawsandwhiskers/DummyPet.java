@@ -45,9 +45,10 @@ class DummyPet extends Pet{
     }
 
     @Override
-    public void die() {
-
+    public String die() {
+        return "";
     }
+
 
     @Override
     public void sleep() {

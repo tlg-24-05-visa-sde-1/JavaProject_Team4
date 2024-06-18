@@ -1,5 +1,7 @@
 package com.pawsandwhiskers;
 
+import org.w3c.dom.ls.LSOutput;
+
 public class Cat extends Pet {
 
    Cat(String name) {
@@ -44,21 +46,24 @@ public class Cat extends Pet {
 
     @Override
     public void pet() {
-        setEnergy(Math.max(getEnergy() + 5, 100));
+        setEnergy(Math.min(getEnergy() + 5, 100));
         System.out.println(getName() + " purrs as you pet it.");
         increaseLife();
     }
 
     @Override
-    public void die() {
+    public String die() {
+       String message= "";
         if (getLife() <= 0) {
             System.out.println(getName() + " passed away. Rest in peace. ﮩ٨ـﮩﮩ٨ـ♡ﮩ٨ـﮩﮩ٨ـ");
+            message = getName() + " passed away. Rest in peace. ﮩ٨ـﮩﮩ٨ـ♡ﮩ٨ـﮩﮩ٨ـ";
         }
+        return message;
     }
 
     @Override
     public void sleep() {
-        setEnergy(Math.max(getEnergy() + 40, 100));
+        setEnergy(Math.min(getEnergy() + 40, 100));
         System.out.println(getName() + " finds a cozy spot and goes to sleep.");
         increaseLife();
     }
