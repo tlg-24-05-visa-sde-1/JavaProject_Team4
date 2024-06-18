@@ -12,8 +12,13 @@ public class AnimalShelterController {
         Pet newPet = askForTypeAndName();
 
         /*
-         * Change where a name needs to be inputted
-         */
+        * Make sure a name is given for the pet
+        * */
+        if (newPet == null || newPet.getName().isEmpty()) {
+            System.out.println("No name entered. Cannot continue.");
+            return;
+        }
+
         if (newPet != null) {
             shelter.addPet(newPet);
             System.out.printf("Congratulations on adopting %s! ", newPet.getName() + "!");

@@ -81,7 +81,6 @@ public abstract class Pet {
         return getEnergy() < 100 || getPotty() < 100 || getHungerThirst() < 100;
     }
 
-
     private int getEffectiveLife() {
         // If energy is over 100, decrease the displayed life
         if (getEnergy() > 100) {
@@ -128,7 +127,7 @@ public abstract class Pet {
     }
 
     public void decreasePottyLevel() {
-        potty = Math.max(potty - 20, 0);
+        potty = Math.max(potty - 40, 0);
         System.out.println(getName() + " feels relieved after the walk.");
     }
 
