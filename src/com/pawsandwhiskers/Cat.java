@@ -12,7 +12,7 @@ public class Cat extends Pet {
 
     @Override
     public void eat() {
-        setHungerThirst(Math.max(getHungerThirst() - 10, 0));
+        setHungerThirst(Math.max(getHungerThirst() - 20, 0));
         System.out.println(getName() + " is eating!");
         increaseLife();
     }

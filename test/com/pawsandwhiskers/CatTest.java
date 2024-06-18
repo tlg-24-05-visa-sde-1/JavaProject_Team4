@@ -1,10 +1,98 @@
 package com.pawsandwhiskers;
 
 import junit.framework.TestCase;
+import org.junit.Before;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
-public class CatTest extends TestCase {
 
-    public void setUp() throws Exception {
-        super.setUp();
+import static com.pawsandwhiskers.PetFactory.createPet;
+
+public class CatTest {
+    Pet cat;
+
+    @Before
+    public void setUp() {
+        cat = createPet(Animal.CAT, "SnowBall");
+    }
+
+
+    @Test
+    public void eat_shouldReduceHungerThirstBy20IncreaseLifeBy1_whenCalled() {
+        cat.setHungerThirst(40);
+        cat.setLife(2);
+        cat.eat();
+        assertEquals(20, cat.getHungerThirst());
+        assertEquals(3,cat.getLife());  //life initially set to 2
+    }
+
+    @Test
+    public void eat_shouldReduceHungerThirstToMinOf0AndLifeToMaxOf3() {
+        cat.eat();  //HungerThirst initially set to 20 and Life to 2;
+        cat.eat();
+        cat.eat();
+        assertEquals(0, cat.getHungerThirst());
+        assertEquals(3,cat.getLife());
+    }
+
+    @Test
+    public void exercise_shouldReduceEnergyBy10_whenCalled() {
+        //Energy set to 50 at instantiation
+        cat.exercise();
+        assertEquals(40, cat.getEnergy());
+    }
+
+    @Test
+    public void exercise_shouldReduceEnergyToMinOf0() {
+        cat.exercise();  //Energy set to 50 at instantiation
+        cat.exercise();
+        cat.exercise();
+        cat.exercise();
+        cat.exercise();
+        cat.exercise();
+        assertEquals(0, cat.getEnergy());
+    }
+
+    @Test
+    public void play_shouldReduceEnergyBy15_whenCalled() {
+        cat.play();
+        assertEquals(35, cat.getEnergy());
+    }
+
+    @Test
+    public void play_shouldReduceEnergyToMinOf0() {
+        cat.play();  //Energy set to 50 at instantiation
+        cat.play();
+        cat.play();
+        cat.play();
+        cat.play();
+        cat.play();
+        assertEquals(0, cat.getEnergy());
+    }
+
+    @Test
+    public void love_shouldIncreaseEnergyBy5_whenCalled() {
+        cat.love();  //Energy set to 50 at instantiation
+        assertEquals(55, cat.getEnergy());
+    }
+
+    @Test
+    public void love_shouldIncreaseEnergyToMaxOf100() {
+        cat.setEnergy(90);
+        cat.love();
+        cat.love();
+        cat.love();
+        assertEquals(100, cat.getEnergy());
+    }
+
+    //Test to do - cuddle, pet, die, sleep
+    @Test
+    public void cuddle_shouldIncreaseEnergyBy10_whenCalled() {
+        cat.cuddle();
+        assertEquals(60, cat.getEnergy());
+    }
+
+    @Test
+    public void cuddle_shouldIncreaseEnergyToMaxOf100() {
     }
 }
