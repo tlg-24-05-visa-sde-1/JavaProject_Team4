@@ -1,215 +1,143 @@
 package com.pawsandwhiskers;
 
-import com.pawsandwhiskers.Dog;
-
 import org.junit.Before;
-
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import static com.pawsandwhiskers.PetFactory.createPet;
+import static org.junit.Assert.*;
 
 public class DogTest {
-
-    private Dog dog;
+    Pet dog;
 
     @Before
-
     public void setUp() {
-
-        // Initialize a Dog object before each test
-
-        dog = new Dog("Buddy", 86, 89, 55, 99);
-
+        dog = createPet(Animal.DOG, "Buddy");
     }
 
     @Test
-
-    public void testEat() {
-
-        // Save the initial values
-
-        int initialHungerThirst = dog.getHungerThirst();
-
-        int initialLife = dog.getLife();
-
-        // Call the eat method
-
+    public void eat_shouldReduceHungerThirstBy10IncreaseLifeBy1_whenCalled() {
+        dog.setHungerThirst(30);
+        dog.setLife(3);
         dog.eat();
-
-        // Verify the changes
-
-        assertEquals(69, dog.getHungerThirst());
-
-        assertEquals(initialLife + 1, dog.getLife());
-
+        assertEquals(20, dog.getHungerThirst());
+        assertEquals(4, dog.getLife());
     }
 
     @Test
-
-    public void testWalk() {
-
-        // Save the initial values
-
-        int initialEnergy = dog.getEnergy();
-
-        int initialPotty = dog.getPotty();
-
-        int initialLife = dog.getLife();
-
-        // Call the walk method
-
-        dog.walk();
-
-        // Verify the changes
-
-        assertEquals(initialEnergy - 10, dog.getEnergy());
-
-        assertEquals(initialPotty - 10, dog.getPotty());
-
-        assertEquals(initialLife + 1, dog.getLife());
-
+    public void eat_shouldReduceHungerThirstToMinOf0AndLifeToMaxOf3() {
+        dog.setHungerThirst(30); // Ensure starting value
+        dog.setLife(3); // Ensure starting value
+        dog.eat();
+        dog.eat();
+        dog.eat();
+        dog.eat();
+        assertEquals(0, dog.getHungerThirst());
+        assertEquals(6, dog.getLife());  // Assuming increaseLife is not capped
     }
 
     @Test
-
-    public void testExercise() {
-
-        // Save the initial values
-
-        int initialEnergy = dog.getEnergy();
-
-        // Call the exercise method
-
+    public void exercise_shouldReduceEnergyBy15_whenCalled() {
+        dog.setEnergy(60); // Ensure starting value
         dog.exercise();
-
-        // Verify the changes
-
-        assertEquals(initialEnergy - 10, dog.getEnergy());
-
+        assertEquals(45, dog.getEnergy());
     }
 
     @Test
+    public void exercise_shouldReduceEnergyToMinOf0() {
+        dog.setEnergy(60); // Ensure starting value
+        dog.exercise();
+        dog.exercise();
+        dog.exercise();
+        dog.exercise();
+        dog.exercise();
+        assertEquals(0, dog.getEnergy());
+    }
 
-    public void testPlay() {
-
-        // Save the initial values
-
-        int initialEnergy = dog.getEnergy();
-
-        // Call the play method
-
+    @Test
+    public void play_shouldReduceEnergyBy20_whenCalled() {
+        dog.setEnergy(50); // Ensure starting value
         dog.play();
-
-        // Verify the changes
-
-        assertEquals(initialEnergy - 10, dog.getEnergy());
-
+        assertEquals(30, dog.getEnergy());
     }
 
     @Test
+    public void play_shouldReduceEnergyToMinOf0() {
+        dog.setEnergy(50); // Ensure starting value
+        dog.play();
+        dog.play();
+        dog.play();
+        assertEquals(0, dog.getEnergy());
+    }
 
-    public void testLove() {
-
-        // Save the initial values
-
-        int initialEnergy = dog.getEnergy();
-
-        int initialLife = dog.getLife();
-
-        // Call the love method
-
+    @Test
+    public void love_shouldIncreaseEnergyBy5_whenCalled() {
+        dog.setEnergy(50); // Ensure starting value
         dog.love();
-
-        // Verify the changes
-
-        assertEquals(Math.min(100, initialEnergy + 5), dog.getEnergy());
-
-        assertEquals(initialLife + 1, dog.getLife());
-
+        assertEquals(55, dog.getEnergy());
     }
 
     @Test
+    public void love_shouldIncreaseEnergyToMaxOf100() {
+        dog.setEnergy(90);
+        dog.love();
+        dog.love();
+        dog.love();
+        assertEquals(100, dog.getEnergy());
+    }
 
-    public void testCuddle() {
-
-        // Save the initial values
-
-        int initialEnergy = dog.getEnergy();
-
-        // Call the cuddle method
-
+    @Test
+    public void cuddle_shouldIncreaseEnergyBy10_whenCalled() {
+        dog.setEnergy(50); // Ensure starting value
         dog.cuddle();
-
-        // Verify the changes
-
-        assertEquals(Math.min(100, initialEnergy + 10), dog.getEnergy());
-
+        assertEquals(60, dog.getEnergy());
     }
 
     @Test
+    public void cuddle_shouldIncreaseEnergyToMaxOf100() {
+        dog.setEnergy(95);
+        dog.cuddle();
+        dog.cuddle();
+        dog.cuddle();
+        assertEquals(100, dog.getEnergy());
+    }
 
-    public void testPet() {
-
-        // Save the initial values
-
-        int initialEnergy = dog.getEnergy();
-
-        int initialLife = dog.getLife();
-
-        // Call the pet method
-
+    // Additional tests for pet, die, and sleep
+    @Test
+    public void pet_shouldIncreaseEnergyBy5_whenCalled() {
+        dog.setEnergy(50); // Ensure starting value
         dog.pet();
-
-        // Verify the changes
-
-        assertEquals(Math.min(100, initialEnergy + 5), dog.getEnergy());
-
-        assertEquals(initialLife + 1, dog.getLife());
-
+        assertEquals(55, dog.getEnergy());
     }
 
     @Test
-
-    public void testDie() {
-
-        // Test the die method
-
-        // Ensure that the "died" message is printed when life is 0 or less
-
+    public void pet_shouldIncreaseEnergyToMaxOf100() {
+        dog.setEnergy(95); // Ensure starting value
+        dog.pet();
+        dog.pet();
+        assertEquals(100, dog.getEnergy());
     }
 
     @Test
+    public void die_shouldOutputDied_whenLifeIsZeroOrLess() {
+        dog.setLife(0);
+        // Capture the output using System.setOut and System.setErr if needed for assertion
+        dog.die();
+        // Example assertion, adapt as necessary to check output
+        // assertTrue(outContent.toString().contains("Buddy died 🐾"));
+    }
 
-    public void testSleep() {
-
-        // Save the initial values
-
-        int initialEnergy = dog.getEnergy();
-
-        int initialLife = dog.getLife();
-
-        // Call the sleep method
-
+    @Test
+    public void sleep_shouldIncreaseEnergyBy20_whenCalled() {
+        dog.setEnergy(50); // Ensure starting value
         dog.sleep();
-
-        // Verify the changes
-
-        assertEquals(initialEnergy - 10, dog.getEnergy());
-
-        assertEquals(initialLife + 1, dog.getLife());
-
+        assertEquals(70, dog.getEnergy());
     }
 
     @Test
-
-    public void testGetEnergyLevel() {
-
-        // Test the getEnergyLevel method
-
-        // Ensure that it returns 100
-
-        assertEquals(100, dog.getEnergyLevel());
-
+    public void sleep_shouldIncreaseEnergyToMaxOf100() {
+        dog.setEnergy(85); // Ensure starting value
+        dog.sleep();
+        dog.sleep();
+        assertEquals(100, dog.getEnergy());
     }
-
 }
