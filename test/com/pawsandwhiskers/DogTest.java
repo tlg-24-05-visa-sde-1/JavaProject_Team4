@@ -123,6 +123,8 @@ public class DogTest {
         dog.die();
         // Example assertion, adapt as necessary to check output
         // assertTrue(outContent.toString().contains("Buddy died 🐾"));
+        assertEquals( "Buddy died 🐾", dog.die());
+
     }
 
     @Test
