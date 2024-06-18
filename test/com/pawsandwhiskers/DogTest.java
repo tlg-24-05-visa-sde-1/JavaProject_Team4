@@ -17,7 +17,6 @@ public class DogTest {
     @Test
     public void eat_shouldReduceHungerThirstBy10IncreaseLifeBy1_whenCalled() {
         dog.setHungerThirst(30);
-        dog.setLife(2);
         dog.eat();
         assertEquals(20, dog.getHungerThirst());
         assertEquals(3, dog.getLife());
