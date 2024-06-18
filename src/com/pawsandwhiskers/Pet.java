@@ -34,7 +34,7 @@ public abstract class Pet {
     public abstract void love();
     public abstract void cuddle();
     public abstract void pet();
-    public abstract void die();
+    public abstract String die();
     public abstract void sleep();
 
     public String getName() {

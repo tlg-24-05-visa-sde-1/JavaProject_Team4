@@ -68,10 +68,13 @@ public class Dog extends Pet {
     }
 
     @Override
-    public void die() {
+    public String die() {
+        String message="";
         if (getLife() <= 0) {
             System.out.println(getName() + " died 🐾");
+            message = getName() + " died 🐾";
         }
+        return message;
     }
 
     @Override

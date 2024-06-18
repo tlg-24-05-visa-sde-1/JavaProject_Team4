@@ -85,7 +85,6 @@ public class CatTest {
         assertEquals(100, cat.getEnergy());
     }
 
-    //Test to do - cuddle, pet, die, sleep
     @Test
     public void cuddle_shouldIncreaseEnergyBy10_whenCalled() {
         cat.cuddle();
@@ -94,5 +93,43 @@ public class CatTest {
 
     @Test
     public void cuddle_shouldIncreaseEnergyToMaxOf100() {
+        cat.setEnergy(90);
+        cat.cuddle();
+        cat.cuddle();
+        assertEquals(100, cat.getEnergy());
+    }
+
+    @Test
+    public void pet_shouldIncreaseEnergyBy5_whenCalled() {
+        cat.pet();
+        assertEquals(55, cat.getEnergy());
+    }
+
+    @Test
+    public void pet_shouldIncreaseEnergyToMaxOf100() {
+        cat.setEnergy(95);
+        cat.pet();
+        cat.pet();
+        assertEquals(100, cat.getEnergy());
+    }
+    @Test
+    public void sleep_shouldIncreaseEnergyBy40_whenCalled() {
+        cat.sleep();
+        assertEquals(90, cat.getEnergy());
+    }
+
+    @Test
+    public void sleep_shouldIncreaseEnergyToMaxOf100() {
+        cat.setEnergy(90);
+        cat.sleep();
+        assertEquals(100, cat.getEnergy());
+    }
+
+    //How do we test the print.ln?  should we have die() return the printed String?
+    @Test
+    public void die_shouldReturnDeathMessageString_whenCalledAndLifeIsLessThanEqualTo0() {
+        cat.setLife(0);
+        cat.die();
+        assertEquals( "SnowBall passed away. Rest in peace. ﮩ٨ـﮩﮩ٨ـ♡ﮩ٨ـﮩﮩ٨ـ", cat.die());
     }
 }
