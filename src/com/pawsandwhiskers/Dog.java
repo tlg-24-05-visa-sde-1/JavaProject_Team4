@@ -76,8 +76,8 @@ public class Dog extends Pet {
 
     @Override
     public void sleep() {
-        setEnergy(Math.min(getEnergy() - 20, 0)); // Decrease energy by 20 when sleeping
-        System.out.println(getName() + " is sleeping.");
+        setEnergy(Math.max(getEnergy() + 20, 100));
+        System.out.println(getName() + " is sleeping");
         increaseLife();
     }
 
