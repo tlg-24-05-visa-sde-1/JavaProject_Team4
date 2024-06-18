@@ -19,7 +19,7 @@ public class Dog extends Pet {
 
     public void walk() {
         setEnergy(Math.max(getEnergy() - 10, 0));
-        setPotty(Math.max(getPotty() - 10, 100));
+        setPotty(Math.max(getPotty() - 10, 0)); // Decrease potty level by 10
         System.out.println(getName() + " is walking.");
         increaseLife();
     }
