@@ -12,16 +12,9 @@ class DummyPet extends Pet{
 
     @Override
     public void eat() {
-
     }
-
-    public void walk() {
-
-    }
-
     @Override
     public void exercise() {
-
     }
 
     @Override

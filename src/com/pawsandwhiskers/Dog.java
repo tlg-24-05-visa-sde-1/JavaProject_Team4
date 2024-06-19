@@ -1,5 +1,9 @@
 package com.pawsandwhiskers;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+
 public class Dog extends Pet {
 
     Dog(String name) {
@@ -11,14 +15,10 @@ public class Dog extends Pet {
     }
 
     @Override
-    public void eat() {
+    public void eat() throws IOException {
         setHungerThirst(Math.max(getHungerThirst() - 10, 0));
+        System.out.println(Files.readAllLines(Path.of("resources/doghungry.txt")));
         System.out.println(getName() + " is eating!");
-        System.out.println("    ,    /-.\n" +
-                "   ((___/ __>\n" +
-                "   /      }\n" +
-                "   \\ .--.(    ___\n" +
-                "    \\\\   \\\\  /___\\");
         increaseLife();
     }
 
