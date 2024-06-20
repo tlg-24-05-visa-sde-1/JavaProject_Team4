@@ -39,7 +39,6 @@ public class Dog extends Pet {
             System.out.println("An error occurred while reading the file.");
         }
         System.out.println(getName() + " is walking.");
-        checkForDeath(); // Check for death after updating energy
     }
 
     @Override
@@ -53,7 +52,6 @@ public class Dog extends Pet {
             System.out.println("An error occurred while reading the file.");
         }
         System.out.println(getName() + " is exercising.");
-        checkForDeath(); // Check for death after updating energy
     }
 
     @Override
@@ -67,7 +65,6 @@ public class Dog extends Pet {
             System.out.println("An error occurred while reading the file.");
         }
         System.out.println(getName() + " is playing.");
-        checkForDeath(); // Check for death after updating energy
     }
 
     @Override
@@ -82,7 +79,6 @@ public class Dog extends Pet {
         }
         System.out.println(getName() + " is being loved ❤ ");
         increaseLife();
-        checkForDeath(); // Check for death after updating energy
     }
 
     @Override
@@ -96,7 +92,6 @@ public class Dog extends Pet {
             System.out.println("An error occurred while reading the file.");
         }
         System.out.println(getName() + " is being cuddled.");
-        checkForDeath(); // Check for death after updating energy
     }
 
     @Override
@@ -111,7 +106,6 @@ public class Dog extends Pet {
         }
         System.out.println(getName() + " is being petted.");
         increaseLife();
-        checkForDeath(); // Check for death after updating energy
     }
 
     @Override
@@ -143,20 +137,7 @@ public class Dog extends Pet {
         }
         System.out.println(getName() + " is sleeping");
         increaseLife();
-        checkForDeath(); // Check for death after updating energy
+        //checkForDeath(); // Check for death after updating energy
     }
 
-    private void checkForDeath() {
-        if (getEnergy() > 85 || getLife() <= 0) {
-            die();
-        }
-    }
-
-    public void setEnergyLevel(int i) {
-        // Implementation not needed, use setEnergy() instead
-    }
-
-    public int getEnergyLevel() {
-        return getEnergy();
-    }
 }
