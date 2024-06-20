@@ -142,66 +142,104 @@ public class AnimalShelterController {
                 if (!isCat) {
                     System.out.println("2. Walk your dog");
                     System.out.println("3. Exercise your pet");
+                    System.out.println("4. Play with your pet");
+                    System.out.println("5. Love your pet");
+                    System.out.println("6. Cuddle your pet");
+                    System.out.println("7. Pet your pet");
+                    System.out.println("8. Put your pet to sleep");
+                    System.out.println("9. Check your pet's status");
+                    System.out.println("10. Exit");
                 } else {
                     System.out.println("2. Exercise your pet");
+                    System.out.println("3. Play with your pet");
+                    System.out.println("4. Love your pet");
+                    System.out.println("5. Cuddle your pet");
+                    System.out.println("6. Pet your pet");
+                    System.out.println("7. Put your pet to sleep");
+                    System.out.println("8. Check your pet's status");
+                    System.out.println("9. Exit");
                 }
-
-                System.out.println("4. Play with your pet");
-                System.out.println("5. Love your pet");
-                System.out.println("6. Cuddle your pet");
-                System.out.println("7. Pet your pet");
-                System.out.println("8. Put your pet to sleep");
-                System.out.println("9. Check your pet's status");
-                System.out.println("10. Exit");
 
                 int choice = prompter.promptForInt();
 
-                switch (choice) {
-                    case 1:
-                        newPet.eat();
-                        newPet.increasePottyLevel();
-                        break;
-                    case 2:
-                        if (!isCat) {
+                if (!isCat) {
+                    switch (choice) {
+                        case 1:
+                            newPet.eat();
+                            newPet.increasePottyLevel();
+                            break;
+                        case 2:
                             ((Dog) newPet).walk();
                             newPet.decreasePottyLevel();
-                        } else {
+                            break;
+                        case 3:
                             newPet.exercise();
                             newPet.decreaseEnergyLevel(10);
-                        }
-                        break;
-                    case 3:
-                        if (!isCat) {
+                            break;
+                        case 4:
+                            newPet.play();
+                            newPet.decreaseEnergyLevel(15);
+                            break;
+                        case 5:
+                            newPet.love();
+                            break;
+                        case 6:
+                            newPet.cuddle();
+                            break;
+                        case 7:
+                            newPet.pet();
+                            break;
+                        case 8:
+                            newPet.sleep();
+                            newPet.decreaseEnergyLevel(30);
+                            break;
+                        case 9:
+                            newPet.displayStatus();
+                            break;
+                        case 10:
+                            running = false;
+                            System.out.println("Good bye");
+                            break;
+                        default:
+                            System.out.println("Invalid choice! Please try again.");
+                    }
+                } else {
+                    switch (choice) {
+                        case 1:
+                            newPet.eat();
+                            newPet.increasePottyLevel();
+                            break;
+                        case 2:
                             newPet.exercise();
                             newPet.decreaseEnergyLevel(10);
-                        }
-                        break;
-                    case 4:
-                        newPet.play();
-                        newPet.decreaseEnergyLevel(15);
-                        break;
-                    case 5:
-                        newPet.love();
-                        break;
-                    case 6:
-                        newPet.cuddle();
-                        break;
-                    case 7:
-                        newPet.pet();
-                        break;
-                    case 8:
-                        newPet.sleep();
-                        newPet.decreaseEnergyLevel(30);
-                        break;
-                    case 9:
-                        newPet.displayStatus();
-                        break;
-                    case 10:
-                        running = false;
-                        System.out.println("Good bye");
-                        break;
-                    default:
-                        System.out.println("Invalid choice! Please try again.");
+                            break;
+                        case 3:
+                            newPet.play();
+                            newPet.decreaseEnergyLevel(15);
+                            break;
+                        case 4:
+                            newPet.love();
+                            break;
+                        case 5:
+                            newPet.cuddle();
+                            break;
+                        case 6:
+                            newPet.pet();
+                            break;
+                        case 7:
+                            newPet.sleep();
+                            newPet.decreaseEnergyLevel(30);
+                            break;
+                        case 8:
+                            newPet.displayStatus();
+                            break;
+                        case 9:
+                            running = false;
+                            System.out.println("Good bye");
+                            break;
+                        default:
+                            System.out.println("Invalid choice! Please try again.");
+                    }
                 }
 
             } catch (InputMismatchException e) {
@@ -220,5 +258,6 @@ public class AnimalShelterController {
             }
         }
     }
+
 }
 
