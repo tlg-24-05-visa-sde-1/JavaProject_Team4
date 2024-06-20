@@ -3,6 +3,7 @@ package com.pawsandwhiskers.controller;
 import com.pawsandwhiskers.*;
 import com.pawsandwhiskers.client.ConsolePrompter;
 
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.InputMismatchException;
@@ -33,7 +34,13 @@ public class AnimalShelterController {
     }
 
     private void welcome() { //welcome banner
-        System.out.println("Welcome to Paws and Whiskers Animal Shelter!");
+        try {
+            for (String line : Files.readAllLines(Path.of("resources/welcome.txt"))) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred while reading the file.");
+        }
     }
 
     /*
@@ -76,21 +83,23 @@ public class AnimalShelterController {
     * */
 
     private Pet askForTypeAndName() {
-        String puppyArt =
-                " ,'.-.'. \n" +
-                "'\\~ o/` ,,\n" +
-                " { @ } f\n" +
-                " /`-'\\$ \n" +
-                "(_/-\\_)  ";
-        String kittenArt =
-                "  /\\_/\\  (\n" +
-                        " ( ^.^ ) _)\n" +
-                        "   \\\"/  (\n" +
-                        " ( | | )\n" +
-                        "(__d b__) ";
+        System.out.println("\nArf Arf!\n");
+        try {
+            for (String line : Files.readAllLines(Path.of("resources/normalDog.txt"))) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred while reading the file.");
+        }
+        System.out.println("\n Meow!\n");
 
-        System.out.println("\nArf Arf!\n" + puppyArt);
-        System.out.println("\n Meow!\n" + kittenArt);
+        try {
+            for (String line : Files.readAllLines(Path.of("resources/normalCat.txt"))) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred while reading the file.");
+        }
 
         try {
             String type;
