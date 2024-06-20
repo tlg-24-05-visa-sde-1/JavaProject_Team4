@@ -12,7 +12,8 @@ public class PetFactory {
         Pet pet = switch (animal) {
             case DOG -> new Dog(name);
             case CAT -> new Cat(name);
-            default -> throw new IllegalArgumentException("Unknown animal type: " + animal + ", animal must be dog or cat." );
+            default ->
+                    throw new IllegalArgumentException("Unknown animal type: " + animal + ", animal must be dog or cat.");
         };
         return pet;
     }

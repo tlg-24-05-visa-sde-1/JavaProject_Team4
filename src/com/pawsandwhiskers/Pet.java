@@ -29,12 +29,19 @@ public abstract class Pet {
     }
 
     public abstract void eat();
+
     public abstract void exercise();
+
     public abstract void play();
+
     public abstract void love();
+
     public abstract void cuddle();
+
     public abstract void pet();
+
     public abstract String die();
+
     public abstract void sleep();
 
     public String getName() {
@@ -59,8 +66,23 @@ public abstract class Pet {
 
     public void displayStatus() {
         int displayedLife = calculateDisplayedLife();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+
         System.out.printf("%s's status - Energy: %d, Life: %d, Potty: %d, Hunger/Thirst: %d\n",
                 getName(), getEnergy(), displayedLife, getPotty(), getHungerThirst());
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
     }
 
     private int calculateDisplayedLife() {
@@ -122,7 +144,7 @@ public abstract class Pet {
             System.out.println(getName() + " is too excited and has lost a life.");
             decreaseLife();
 
-            if (getLife() <= 0){
+            if (getLife() <= 0) {
                 System.out.println(getName() + " has died of a heart attack.");
             }
         }
@@ -131,7 +153,7 @@ public abstract class Pet {
             System.out.println(getName() + " is too hungry and has lost a life.");
             decreaseLife();
 
-            if (getLife() <= 0){
+            if (getLife() <= 0) {
                 System.out.println(getName() + " has died of hunger.");
             }
         }
