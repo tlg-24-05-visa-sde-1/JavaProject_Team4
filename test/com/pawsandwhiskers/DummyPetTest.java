@@ -15,7 +15,6 @@ public class DummyPetTest {
     @Test
     public void testInitialValues() {
         assertEquals("Buddy", testPet.getName());
-        assertEquals();
     }
 
     //NAMED MEMBER-LEVEL INNER CLASSES - make it private b/c only DummyPetTest needs it
