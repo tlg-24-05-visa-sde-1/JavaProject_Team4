@@ -130,6 +130,6 @@ public class CatTest {
     public void die_shouldReturnDeathMessageString_whenCalledAndLifeIsLessThanEqualTo0() {
         cat.setLife(0);
         cat.die();
-        assertEquals( "SnowBall passed away. Rest in peace. ﮩ٨ـﮩﮩ٨ـ♡ﮩ٨ـﮩﮩ٨ـ", cat.die());
+        assertEquals( "SnowBall passed away. Rest in peace.", cat.die());
     }
 }

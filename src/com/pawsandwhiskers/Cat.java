@@ -12,10 +12,6 @@ public class Cat extends Pet {
         super(name);
     }
 
-    Cat(String name, int energy, int life, int potty, int hungerThirst) {
-        super(name, energy, life, potty, hungerThirst);
-    }
-
     @Override
     public void eat() {
         setHungerThirst(Math.max(getHungerThirst() - 20, 0));
@@ -108,8 +104,8 @@ public class Cat extends Pet {
             } catch (IOException e) {
                 System.out.println("An error occurred while reading the file.");
             }
-            // System.out.println(getName() + " passed away. Rest in peace. ﮩ٨ـﮩﮩ٨ـ♡ﮩ٨ـﮩﮩ٨ـ");
-            message = getName() + " passed away. Rest in peace. ﮩ٨ـﮩﮩ٨ـ♡ﮩ٨ـﮩﮩ٨ـ";
+            // System.out.println(getName() + " passed away. Rest in peace.ﮩ٨ـﮩﮩ٨ـ♡ﮩ٨ـﮩﮩ٨ـ");
+            message = getName() + " passed away. Rest in peace.";
         }
         return message;
     }
