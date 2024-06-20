@@ -61,6 +61,14 @@ public class CatTest {
     }
 
     @Test
+    public void exercise_shouldIncreaseHungerThirstBy10Until100() {
+        cat.setHungerThirst(90);
+        cat.exercise();
+        cat.exercise();
+        assertEquals(100, cat.getHungerThirst());
+    }
+
+    @Test
     public void play_shouldIncreaseHungerThirstBy10Until100() {
         cat.setHungerThirst(90);
         cat.play();
@@ -75,13 +83,6 @@ public class CatTest {
         assertEquals(60, cat.getHungerThirst());
     }
 
-    @Test
-    public void exercise_shouldIncreaseHungerThirstBy10Until100() {
-        cat.setHungerThirst(90);
-        cat.exercise();
-        cat.exercise();
-        assertEquals(100, cat.getHungerThirst());
-    }
 
     @Test
     public void play_shouldReduceEnergyBy15_whenCalled() {
