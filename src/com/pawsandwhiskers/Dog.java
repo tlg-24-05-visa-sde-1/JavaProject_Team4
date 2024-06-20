@@ -17,6 +17,13 @@ public class Dog extends Pet {
     @Override
     public void eat(){
         setHungerThirst(Math.max(getHungerThirst() - 10, 0));
+        try {
+            for (String line : Files.readAllLines(Path.of("resources/dogeating.txt"))) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred while reading the file.");
+        }
         System.out.println(getName() + " is eating!");
         increaseLife();
     }
@@ -24,31 +31,53 @@ public class Dog extends Pet {
     public void walk() {
         setEnergy(Math.max(getEnergy() - 10, 0));
         setPotty(Math.min(getPotty() - 10, 0)); // Decrease potty level by 10
+        try {
+            for (String line : Files.readAllLines(Path.of("resources/dogwalk.txt"))) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred while reading the file.");
+        }
         System.out.println(getName() + " is walking.");
-        System.out.println(" " +
-                "/ \\__\n" +
-                "(    @\\___\n" +
-                " /         O\n" +
-                "/   (_____/\n" +
-                "/_/_____/ \n");
         increaseLife();
     }
 
     @Override
     public void exercise() {
         setEnergy(Math.max(getEnergy() - 10, 0));
+        try {
+            for (String line : Files.readAllLines(Path.of("resources/dogexercising.txt"))) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred while reading the file.");
+        }
         System.out.println(getName() + " is exercising.");
     }
 
     @Override
     public void play() {
         setEnergy(Math.max(getEnergy() - 20, 0));
+        try {
+            for (String line : Files.readAllLines(Path.of("resources/dogplay.txt"))) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred while reading the file.");
+        }
         System.out.println(getName() + " is playing.");
     }
 
     @Override
     public void love() {
         setEnergy(Math.min(getEnergy() + 5, 100));
+        try {
+            for (String line : Files.readAllLines(Path.of("resources/doglove.txt"))) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred while reading the file.");
+        }
         System.out.println(getName() + " is being loved ❤ ");
         increaseLife();
     }
@@ -56,12 +85,26 @@ public class Dog extends Pet {
     @Override
     public void cuddle() {
         setEnergy(Math.min(100, getEnergy() + 10)); // Increase energy by 10, capped at 100
+        try {
+            for (String line : Files.readAllLines(Path.of("resources/doglove.txt"))) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred while reading the file.");
+        }
         System.out.println(getName() + " is being cuddled.");
     }
 
     @Override
     public void pet() {
         setEnergy(Math.min(getEnergy() + 5, 100));
+        try {
+            for (String line : Files.readAllLines(Path.of("resources/doglove.txt"))) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred while reading the file.");
+        }
         System.out.println(getName() + " is being petted.");
         increaseLife();
     }
@@ -70,6 +113,13 @@ public class Dog extends Pet {
     public String die() {
         String message="";
         if (getLife() <= 0) {
+            try {
+                for (String line : Files.readAllLines(Path.of("resources/grave.txt"))) {
+                    System.out.println(line);
+                }
+            } catch (IOException e) {
+                System.out.println("An error occurred while reading the file.");
+            }
             System.out.println(getName() + " died 🐾");
             message = getName() + " died 🐾";
         }
@@ -79,6 +129,13 @@ public class Dog extends Pet {
     @Override
     public void sleep() {
         setEnergy(Math.max(getEnergy() + 20, 100));
+        try {
+            for (String line : Files.readAllLines(Path.of("resources/dogsleeping.txt"))) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred while reading the file.");
+        }
         System.out.println(getName() + " is sleeping");
         increaseLife();
     }

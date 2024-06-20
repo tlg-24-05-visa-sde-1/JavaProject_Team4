@@ -5,7 +5,6 @@ import java.util.List;
 
 public class AnimalShelter {
     private final List<Pet> pets = new ArrayList<>();
-
     public void addPet(Pet pet) {
         pets.add(pet);
     }
