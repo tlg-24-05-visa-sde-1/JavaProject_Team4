@@ -153,40 +153,28 @@ public class DummyPetTest {
     }
 
     @Test
-    public void checkHungerThirst_shouldReduceLifeBy1IfHungerThirstEqualToOrGreaterThan100() {
-        pet.setLife(2);
-        pet.setHungerThirst(100);
-        pet.checkHungerThirst();
-        assertEquals(1,pet.getLife());
+    public void increaseLife_shouldIncreaseLifeBy1_whenCalledTOMaxOf3() {
+        pet.setLife(1);
+        pet.increaseLife();
+        assertEquals(2, pet.getLife());
+        pet.increaseLife();
+        assertEquals(3,pet.getLife());
+        pet.increaseLife();
+        assertEquals(3,pet.getLife());
     }
 
     @Test
-    public void checkHungerThirst_shouldNotReduceLifeBy1IfHungerThirstUnder100() {
+    public void checkNeeds_shouldReduceLifeBy1IfCalledAndEnergyGreaterThanEqualTo90() {
         pet.setLife(2);
-        pet.setHungerThirst(99);
-        pet.checkHungerThirst();
-        assertEquals(2,pet.getLife());
-    }
-
-    @Test
-    public void checkHungerThirst_shouldSetHungerTo0IfCalledAndLifeIsDecreasedByOne() {
-        pet.setHungerThirst(100);
-        pet.checkHungerThirst();
-        assertEquals(0,pet.getHungerThirst());
-    }
-
-    @Test
-    public void checkNeeds_shouldReduceLifeBy1IfCalledAndEnergyLessThanEqualToZero() {
-        pet.setLife(2);
-        pet.setEnergy(0);
+        pet.setEnergy(90);
         pet.checkNeeds();
         assertEquals(1, pet.getLife());
     }
 
     @Test
-    public void checkNeeds_shouldNotReduceLifeBy1IfCalledAndEnergyGreaterThan0() {
+    public void checkNeeds_shouldNotReduceLifeBy1IfCalledAndEnergyLessThan90() {
         pet.setLife(2);
-        pet.setEnergy(1);
+        pet.setEnergy(89);
         pet.checkNeeds();
         assertEquals(2, pet.getLife());
     }
@@ -223,20 +211,7 @@ public class DummyPetTest {
         assertEquals(2, pet.getLife());
     }
 
-    @Test
-    public void hasBeenWalkedExercisedOrPlayed_shouldReturnFalseIfEnergyPottyOrHungerThirstEqual100() {
-        pet.setHungerThirst(100);
-        assertFalse(pet.hasBeenWalkedExercisedOrPlayed());
-    }
 
-    @Test
-    public void checkEnergyAndNeeds_shouldDecreaseLifeByOneIfCalledAndEnergyGreaterEqualTo100AndHasBeenWalkedExerciseOrPlayedIsFalse() {
-        pet.setLife(2);
-        pet.setEnergy(100);    //Setting Energy, HungerThirst, or Potty to 100 turns hasBeenWalkedExercisedOrPlayed to false
-        pet.setPotty(100);
-        pet.checkEnergyAndNeeds();
-        assertEquals(1,pet.getLife());
-    }
 
     //named member-level inner class - private b/c only DummyPetTest needs it
     private class DummyPet extends Pet{
