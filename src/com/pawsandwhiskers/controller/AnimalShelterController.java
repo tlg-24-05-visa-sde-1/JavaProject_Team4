@@ -157,7 +157,7 @@ public class AnimalShelterController {
                     System.out.println("5. Love your pet");
                     System.out.println("6. Cuddle your pet");
                     System.out.println("7. Pet your pet");
-                    System.out.println("8. Put your pet to sleep");
+                    System.out.println("8. Put your pet down for bed");
                     System.out.println("9. Check your pet's status");
                     System.out.println("10. Exit");
                 } else {
@@ -166,7 +166,7 @@ public class AnimalShelterController {
                     System.out.println("4. Love your pet");
                     System.out.println("5. Cuddle your pet");
                     System.out.println("6. Pet your pet");
-                    System.out.println("7. Put your pet to sleep");
+                    System.out.println("7. Put your pet down for bed");
                     System.out.println("8. Check your pet's status");
                     System.out.println("9. Exit");
                 }
@@ -270,22 +270,17 @@ public class AnimalShelterController {
                     }
                 }
 
-            } catch (InputMismatchException e) {
-                System.out.println("Invalid input. Please enter a number between 1 and 10.");
-                prompter.promptForString(); // Consume invalid input
+                newPet.checkNeeds(); // Check the pet's needs after each action
+
+                if (newPet.getLife() <= 0) {
+                    System.out.println(newPet.die());
+                    running = false;
+                }
             } catch (Exception e) {
-                System.out.println("An unexpected error occurred: " + e.getMessage());
-            }
-
-            newPet.checkHungerThirst();
-            newPet.checkEnergyAndNeeds(); // Check energy and if needs have been met
-
-            if (newPet.getLife() <= 0) {
-                System.out.println("Your pet has died. Game over.");
+                System.out.println("Error occurred: " + e.getMessage());
                 running = false;
             }
         }
     }
-
 }
 
