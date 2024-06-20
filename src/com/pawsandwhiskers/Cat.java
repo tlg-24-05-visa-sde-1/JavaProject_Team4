@@ -28,20 +28,23 @@ public class Cat extends Pet {
 
     @Override
     public void exercise() {
-        setEnergy(Math.max(getEnergy() - 10, 0));
-        try {
-            for (String line : Files.readAllLines(Path.of("resources/catplay.txt"))) {
-                System.out.println(line);
+            setEnergy(Math.max(getEnergy() - 10, 0));
+            setHungerThirst(Math.min(getHungerThirst() +10, 100));
+            try {
+                for (String line : Files.readAllLines(Path.of("resources/catplay.txt"))) {
+                    System.out.println(line);
+                }
+            } catch (IOException e) {
+                System.out.println("An error occurred while reading the file.");
             }
-        } catch (IOException e) {
-            System.out.println("An error occurred while reading the file.");
-        }
-        System.out.println(getName() + " is stretching and exercising.");
+            System.out.println(getName() + " is stretching and exercising.");
     }
 
     @Override
     public void play() {
         setEnergy(Math.max(getEnergy() - 15, 0));
+        setHungerThirst(Math.min(getHungerThirst() +10, 100));
+
         try {
             for (String line : Files.readAllLines(Path.of("resources/catplay.txt"))) {
                 System.out.println(line);
@@ -96,7 +99,7 @@ public class Cat extends Pet {
     @Override
     public String die() {
         String message = "";
-        if (getLife() <= 0) {
+        if (getLife() <= 0 ||getEnergy()<=0) {
             try {
                 for (String line : Files.readAllLines(Path.of("resources/grave.txt"))) {
                     System.out.println(line);
