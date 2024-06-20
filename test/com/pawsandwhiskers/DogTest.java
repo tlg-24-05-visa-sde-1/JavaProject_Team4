@@ -122,8 +122,8 @@ public class DogTest {
         // Capture the output using System.setOut and System.setErr if needed for assertion
         dog.die();
         // Example assertion, adapt as necessary to check output
-        // assertTrue(outContent.toString().contains("Buddy died 🐾"));
-        assertEquals( "Buddy died 🐾", dog.die());
+        // assertTrue(outContent.toString().contains("Buddy died"));
+        assertEquals("Buddy died ﮩ٨ـﮩﮩ٨ـ♡ﮩ٨ـﮩﮩ٨ـ",  dog.die());
 
     }
 

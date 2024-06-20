@@ -120,7 +120,7 @@ public class Dog extends Pet {
                 System.out.println("An error occurred while reading the file.");
             }
             //System.out.println(getName() + " died 🐾");
-            message = getName() + " died 🐾  ﮩ٨ـﮩﮩ٨ـ♡ﮩ٨ـﮩﮩ٨ـ\"";
+            message = getName() + " died ﮩ٨ـﮩﮩ٨ـ♡ﮩ٨ـﮩﮩ٨ـ\"";
         }
         return message;
     }
