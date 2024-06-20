@@ -123,7 +123,6 @@ public class Dog extends Pet {
             } catch (IOException e) {
                 System.out.println("An error occurred while reading the file.");
             }
-            //System.out.println(getName() + " died 🐾");
             message = getName() + " died";
         }
         return message;
