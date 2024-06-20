@@ -49,38 +49,9 @@ public class AnimalShelterController {
      *
      * case sensitive, .toLowerCase() which will make everything lowercase, so it can match.
      *
+     * This will keep prompting the user to select type of pet (dog and cat only)
+     * exception wss added to it to not allow anything other than cat/ dog
      * */
-
-//    private Pet askForTypeAndName() {
-//        String puppyArt = " / \\__\n(    @\\___\n /         O\n/   (_____/\n/_/_____/ ";
-//        String kittenArt = " /\\_/\\  \n( o.o ) \n > ^ < ";
-//
-//        System.out.println("\nArf Arf!\n" + puppyArt);
-//        System.out.println("\n Meow!\n" + kittenArt);
-//
-//        System.out.println("Would you like to adopt a dog or a cat? ");
-//        String type = prompter.promptForString().toLowerCase();
-//
-//        if (type.equals("cat") || type.equals("dog")) {
-//            System.out.println("What would you like to name your new pet?");
-//            String name = prompter.promptForString();
-//
-//            if (type.equals("cat")) {
-//                return
-//                        PetFactory.createPet(Animal.CAT, name);
-//            } else { // Assume type.equals("dog")
-//                return
-//                        PetFactory.createPet(Animal.DOG, name);
-//            }
-//        } else {
-//            System.out.println("We currently only have Dogs and Cats for adoption at the moment.");
-//            return null;
-//        }
-//    }
-    /*
-    * This will keep prompting the user to select type of pet (dog and cat only)
-    * exception wss added to it to not allow anything other than cat/ dog
-    * */
 
     private Pet askForTypeAndName() {
         System.out.println("\nArf Arf!\n");
