@@ -15,7 +15,7 @@ public class Dog extends Pet {
     }
 
     @Override
-    public void eat() throws IOException {
+    public void eat(){
         setHungerThirst(Math.max(getHungerThirst() - 10, 0));
         try {
             for (String line : Files.readAllLines(Path.of("resources/dogeating.txt"))) {
