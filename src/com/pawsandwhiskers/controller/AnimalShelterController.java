@@ -2,13 +2,14 @@ package com.pawsandwhiskers.controller;
 
 import com.pawsandwhiskers.*;
 import com.pawsandwhiskers.client.ConsolePrompter;
-
+import java.util.Scanner;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.InputMismatchException;
 
 public class AnimalShelterController {
+    Scanner scanner = new Scanner(System.in);
     private final Prompter prompter = new ConsolePrompter();
     private final AnimalShelter shelter = new AnimalShelter();
 
@@ -142,7 +143,7 @@ public class AnimalShelterController {
                     System.out.println("9. Exit");
                 }
 
-                int choice = prompter.promptForInt();
+                int choice = promptForInt(scanner);
 
                 if (!isCat) {
                     switch (choice) {
@@ -245,12 +246,25 @@ public class AnimalShelterController {
 
                 if (newPet.getLife() <= 0) {
                     System.out.println(newPet.die());
+                    System.out.println();
                     System.out.println("Thanks for playing!  Next time, take a little better care of your pet;)");
+                    System.out.println();
                     running = false;
                 }
             } catch (Exception e) {
                 System.out.println("Error occurred: " + e.getMessage());
                 running = false;
+            }
+        }
+    }
+    public static int promptForInt(Scanner scanner) {
+        while (true) {
+            System.out.print("Enter your choice: ");
+            if (scanner.hasNextInt()) {
+                return scanner.nextInt();
+            } else {
+                System.out.println("Invalid input. Please enter a valid integer from the provided options.");
+                scanner.next(); // clear the invalid input
             }
         }
     }
