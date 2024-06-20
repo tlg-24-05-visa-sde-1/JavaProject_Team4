@@ -61,8 +61,22 @@ public abstract class Pet {
     public void displayStatus() {
         int displayedLife = calculateDisplayedLife();
         String hearts = "❤".repeat(displayedLife) + "♡".repeat(3 - displayedLife);
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
         System.out.printf("%s's status - Energy: %d, Life: %s, Potty: %d, Hunger/Thirst: %d\n",
                 getName(), getEnergy(), hearts, getPotty(), getHungerThirst());
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
     }
 
     private int calculateDisplayedLife() {
@@ -78,7 +92,7 @@ public abstract class Pet {
         return Math.max(0, Math.min(currentLife, 3));
     }
 
-    private boolean hasBeenWalkedExercisedOrPlayed() {
+    public boolean hasBeenWalkedExercisedOrPlayed() {
         return getEnergy() < 100 || getPotty() < 100 || getHungerThirst() < 100;
     }
 
