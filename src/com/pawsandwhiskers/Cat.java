@@ -108,7 +108,7 @@ public class Cat extends Pet {
             } catch (IOException e) {
                 System.out.println("An error occurred while reading the file.");
             }
-            System.out.println(getName() + " passed away. Rest in peace. ﮩ٨ـﮩﮩ٨ـ♡ﮩ٨ـﮩﮩ٨ـ");
+            // System.out.println(getName() + " passed away. Rest in peace. ﮩ٨ـﮩﮩ٨ـ♡ﮩ٨ـﮩﮩ٨ـ");
             message = getName() + " passed away. Rest in peace. ﮩ٨ـﮩﮩ٨ـ♡ﮩ٨ـﮩﮩ٨ـ";
         }
         return message;
