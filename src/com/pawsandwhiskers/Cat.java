@@ -8,7 +8,7 @@ import java.nio.file.Path;
 
 public class Cat extends Pet {
 
-   Cat(String name) {
+    Cat(String name) {
         super(name);
     }
 
@@ -99,7 +99,7 @@ public class Cat extends Pet {
 
     @Override
     public String die() {
-       String message= "";
+        String message = "";
         if (getLife() <= 0) {
             try {
                 for (String line : Files.readAllLines(Path.of("resources/grave.txt"))) {

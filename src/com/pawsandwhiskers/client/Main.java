@@ -1,4 +1,5 @@
 package com.pawsandwhiskers.client;
+
 import com.pawsandwhiskers.controller.AnimalShelterController;
 
 public class Main {
