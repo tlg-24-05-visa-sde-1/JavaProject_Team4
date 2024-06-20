@@ -15,9 +15,8 @@ public class Dog extends Pet {
     }
 
     @Override
-    public void eat() throws IOException {
+    public void eat(){
         setHungerThirst(Math.max(getHungerThirst() - 10, 0));
-        System.out.println(Files.readAllLines(Path.of("resources/doghungry.txt")));
         System.out.println(getName() + " is eating!");
         increaseLife();
     }

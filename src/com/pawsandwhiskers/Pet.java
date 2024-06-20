@@ -29,7 +29,7 @@ public abstract class Pet {
         this.attributes.put("energy", energy); // Initialize energy
     }
 
-    public abstract void eat() throws IOException;
+    public abstract void eat();
     public abstract void exercise();
     public abstract void play();
     public abstract void love();
