@@ -10,9 +10,6 @@ public class Dog extends Pet {
         super(name);
     }
 
-    Dog(String name, int energy, int life, int potty, int hungerThirst) {
-        super(name, energy, life, potty, hungerThirst);
-    }
 
     @Override
     public void eat() {
