@@ -10,13 +10,11 @@ public class Dog extends Pet {
         super(name);
     }
 
-    Dog(String name, int energy, int life, int potty, int hungerThirst) {
-        super(name, energy, life, potty, hungerThirst);
-    }
 
     @Override
     public void eat() {
         setHungerThirst(Math.max(getHungerThirst() - 10, 0));
+
         try {
             for (String line : Files.readAllLines(Path.of("resources/dogeating.txt"))) {
                 System.out.println(line);
@@ -31,6 +29,8 @@ public class Dog extends Pet {
     public void walk() {
         setEnergy(Math.max(getEnergy() - 10, 0));
         setPotty(Math.min(getPotty() - 10, 0)); // Decrease potty level by 10
+        setHungerThirst(Math.min(getHungerThirst() +10, 100));
+
         try {
             for (String line : Files.readAllLines(Path.of("resources/dogwalk.txt"))) {
                 System.out.println(line);
@@ -44,6 +44,8 @@ public class Dog extends Pet {
     @Override
     public void exercise() {
         setEnergy(Math.max(getEnergy() - 10, 0));
+        setHungerThirst(Math.min(getHungerThirst() +20, 100));
+
         try {
             for (String line : Files.readAllLines(Path.of("resources/dogexercising.txt"))) {
                 System.out.println(line);
@@ -57,6 +59,8 @@ public class Dog extends Pet {
     @Override
     public void play() {
         setEnergy(Math.max(getEnergy() - 20, 0));
+        setHungerThirst(Math.min(getHungerThirst() +20, 100));
+
         try {
             for (String line : Files.readAllLines(Path.of("resources/dogplay.txt"))) {
                 System.out.println(line);

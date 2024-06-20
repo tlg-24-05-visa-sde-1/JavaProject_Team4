@@ -12,10 +12,6 @@ public class Cat extends Pet {
         super(name);
     }
 
-    Cat(String name, int energy, int life, int potty, int hungerThirst) {
-        super(name, energy, life, potty, hungerThirst);
-    }
-
     @Override
     public void eat() {
         setHungerThirst(Math.max(getHungerThirst() - 20, 0));
@@ -32,20 +28,23 @@ public class Cat extends Pet {
 
     @Override
     public void exercise() {
-        setEnergy(Math.max(getEnergy() - 10, 0));
-        try {
-            for (String line : Files.readAllLines(Path.of("resources/catplay.txt"))) {
-                System.out.println(line);
+            setEnergy(Math.max(getEnergy() - 10, 0));
+            setHungerThirst(Math.min(getHungerThirst() +10, 100));
+            try {
+                for (String line : Files.readAllLines(Path.of("resources/catplay.txt"))) {
+                    System.out.println(line);
+                }
+            } catch (IOException e) {
+                System.out.println("An error occurred while reading the file.");
             }
-        } catch (IOException e) {
-            System.out.println("An error occurred while reading the file.");
-        }
-        System.out.println(getName() + " is stretching and exercising.");
+            System.out.println(getName() + " is stretching and exercising.");
     }
 
     @Override
     public void play() {
         setEnergy(Math.max(getEnergy() - 15, 0));
+        setHungerThirst(Math.min(getHungerThirst() +10, 100));
+
         try {
             for (String line : Files.readAllLines(Path.of("resources/catplay.txt"))) {
                 System.out.println(line);
@@ -100,7 +99,7 @@ public class Cat extends Pet {
     @Override
     public String die() {
         String message = "";
-        if (getLife() <= 0) {
+        if (getLife() <= 0 ||getEnergy()<=0) {
             try {
                 for (String line : Files.readAllLines(Path.of("resources/grave.txt"))) {
                     System.out.println(line);
@@ -108,8 +107,8 @@ public class Cat extends Pet {
             } catch (IOException e) {
                 System.out.println("An error occurred while reading the file.");
             }
-            // System.out.println(getName() + " passed away. Rest in peace. ﮩ٨ـﮩﮩ٨ـ♡ﮩ٨ـﮩﮩ٨ـ");
-            message = getName() + " passed away. Rest in peace. ﮩ٨ـﮩﮩ٨ـ♡ﮩ٨ـﮩﮩ٨ـ";
+            // System.out.println(getName() + " passed away. Rest in peace.ﮩ٨ـﮩﮩ٨ـ♡ﮩ٨ـﮩﮩ٨ـ");
+            message = getName() + " passed away. Rest in peace.";
         }
         return message;
     }
