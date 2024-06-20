@@ -53,6 +53,28 @@ public class DogTest {
     }
 
     @Test
+    public void exercise_shouldIncreaseHungerThirstBy10() {
+        dog.setHungerThirst(50);
+        dog.exercise();
+        assertEquals(60, dog.getHungerThirst());
+    }
+
+    @Test
+    public void exercise_shouldIncreaseHungerThirstBy10Until100() {
+        dog.setHungerThirst(90);
+        dog.exercise();
+        dog.exercise();
+        assertEquals(100, dog.getHungerThirst());
+    }
+
+    @Test
+    public void play_shouldIncreaseHungerThirstBy10Until100() {
+        dog.setHungerThirst(90);
+        dog.play();
+        dog.play();
+        assertEquals(100, dog.getHungerThirst());
+    }
+    @Test
     public void play_shouldReduceEnergyBy20_whenCalled() {
         dog.setEnergy(50); // Ensure starting value
         dog.play();
@@ -117,6 +139,20 @@ public class DogTest {
     }
 
     @Test
+    public void sleep_shouldIncreaseEnergyBy40_whenCalled() {
+        dog.sleep();
+        assertEquals(90, dog.getEnergy());
+    }
+
+    @Test
+    public void sleep_shouldIncreaseEnergyToMaxOf100() {
+        dog.setEnergy(90);
+        dog.sleep();
+        assertEquals(100, dog.getEnergy());
+    }
+
+
+    @Test
     public void die_shouldOutputDied_whenLifeIsZeroOrLess() {
         dog.setLife(0);
         // Capture the output using System.setOut and System.setErr if needed for assertion
@@ -130,14 +166,6 @@ public class DogTest {
     @Test
     public void sleep_shouldIncreaseEnergyBy20_whenCalled() {
         dog.setEnergy(50); // Ensure starting value
-        dog.sleep();
-        assertEquals(100, dog.getEnergy());
-    }
-
-    @Test
-    public void sleep_shouldIncreaseEnergyToMaxOf100() {
-        dog.setEnergy(85); // Ensure starting value
-        dog.sleep();
         dog.sleep();
         assertEquals(100, dog.getEnergy());
     }
