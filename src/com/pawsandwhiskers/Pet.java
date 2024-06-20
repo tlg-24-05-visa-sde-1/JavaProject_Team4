@@ -114,7 +114,6 @@ public abstract class Pet {
     public void decreaseLife() {
         life--;
         if (life <= 0) {
-            die();
         }
     }
 
