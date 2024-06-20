@@ -1,6 +1,5 @@
 package com.pawsandwhiskers;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -60,9 +59,8 @@ public abstract class Pet {
 
     public void displayStatus() {
         int displayedLife = calculateDisplayedLife();
-        String hearts = "❤".repeat(displayedLife) + "♡".repeat(3 - displayedLife);
-        System.out.printf("%s's status - Energy: %d, Life: %s, Potty: %d, Hunger/Thirst: %d\n",
-                getName(), getEnergy(), hearts, getPotty(), getHungerThirst());
+        System.out.printf("%s's status - Energy: %d, Life: %d, Potty: %d, Hunger/Thirst: %d\n",
+                getName(), getEnergy(), displayedLife, getPotty(), getHungerThirst());
     }
 
     private int calculateDisplayedLife() {
@@ -82,36 +80,11 @@ public abstract class Pet {
         return getEnergy() < 100 || getPotty() < 100 || getHungerThirst() < 100;
     }
 
-    private int getEffectiveLife() {
-        // If energy is over 100, decrease the displayed life
-        if (getEnergy() > 100) {
-            return Math.max(0, life - 1);
-        } else {
-            return life;
-        }
-    }
-
-    public void checkHungerThirst() {
-        if (hungerThirst >= 100) {
-            life--;
-            hungerThirst = 0; // Reset hunger/thirst after affecting life
-            System.out.println(name + " has not been fed for a while and has lost a life.");
-            if (life <= 0) {
-                die();
-            }
-        }
-    }
-
     public void setEnergy(int energy) {
-        if (energy > 100) {
-            this.attributes.put("energy", 100);
-            dieFromExcessiveEnergy(); // Handle death from excessive energy
-        } else {
-            this.attributes.put("energy", Math.max(0, energy));
-        }
+        this.attributes.put("energy", Math.min(Math.max(energy, 0), 100));
     }
 
-    public void setLife(int life) { //sets life for 0 as min and 3 as max
+    public void setLife(int life) {
         this.life = Math.min(Math.max(life, 0), 3);
     }
 
@@ -146,37 +119,31 @@ public abstract class Pet {
     }
 
     public void checkNeeds() {
-        if (getEnergy() <= 0 || getPotty() >= 100 || getHungerThirst() >= 100) {
-            life--;
-            System.out.println(getName() + " has not been taken care of and has lost a life.");
-            if (life <= 0) {
-                die();
+        if (getEnergy() >= 90) {
+            System.out.println(getName() + " is too excited and has lost a life.");
+            decreaseLife();
+
+            if (getLife() <= 0){
+                System.out.println(getName() + " has died of a heart attack.");
             }
         }
-    }
 
-    public void checkEnergyAndNeeds() {
-        if (getEnergy() >= 100 && !hasBeenWalkedExercisedOrPlayed()) {
-            life--;
-            System.out.println(getName() + " lost a heart due to excessive energy and lack of activity.");
-            if (life <= 0) {
-                die();
+        if (getHungerThirst() >= 100) {
+            System.out.println(getName() + " is too hungry and has lost a life.");
+            decreaseLife();
+
+            if (getLife() <= 0){
+                System.out.println(getName() + " has died of hunger.");
             }
         }
-    }
 
-    protected void increaseLife() {
-        if (life < 3) {
-            life++;
-            System.out.println(name + " has gained a life.");
+        if (getPotty() >= 100) {
+            System.out.println(getName() + " has had an accident and has lost a life.");
+            decreaseLife();
         }
     }
 
-    private void dieFromExcessiveEnergy() {
-        life--;
-        System.out.println(name + " died due to excessive energy and lack of food.");
-        if (life <= 0) {
-            die();
-        }
+    public void increaseLife() {
+        life = Math.min(life + 1, 3); // Increase life but cap it at 3
     }
 }
