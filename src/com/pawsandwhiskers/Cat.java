@@ -118,7 +118,7 @@ public class Cat extends Pet {
     public void sleep() {
         setEnergy(Math.min(getEnergy() + 40, 100));
         try {
-            for (String line : Files.readAllLines(Path.of("resources/catsleep.txt"))) {
+            for (String line : Files.readAllLines(Path.of("resources/catsleeping.txt"))) {
                 System.out.println(line);
             }
         } catch (IOException e) {
