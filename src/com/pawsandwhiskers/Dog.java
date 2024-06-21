@@ -87,7 +87,7 @@ public class Dog extends Pet {
 
     @Override
     public void cuddle() {
-        setEnergy(Math.min(100, getEnergy() + 10)); // Increase energy by 10, capped at 100
+        setEnergy(Math.min(100, getEnergy() + 10));
         try {
             for (String line : Files.readAllLines(Path.of("resources/doglove.txt"))) {
                 System.out.println(line);
@@ -140,6 +140,6 @@ public class Dog extends Pet {
         }
         System.out.println(getName() + " is sleeping");
         increaseLife();
-        //checkForDeath(); // Check for death after updating energy
+        //checkForDeath();
     }
 }

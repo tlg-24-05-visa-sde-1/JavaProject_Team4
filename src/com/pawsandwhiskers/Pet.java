@@ -4,11 +4,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public abstract class Pet {
-    private String name;
+    private final String name;
     private int life;
     private int potty;
     private int hungerThirst;
-    private Map<String, Integer> attributes;
+    private final Map<String, Integer> attributes;
 
     public Pet(String name) {
         this.name = name;
@@ -165,6 +165,6 @@ public abstract class Pet {
     }
 
     public void increaseLife() {
-        life = Math.min(life + 1, 3); // Increase life but cap it at 3
+        life = Math.min(life + 1, 3);
     }
 }
