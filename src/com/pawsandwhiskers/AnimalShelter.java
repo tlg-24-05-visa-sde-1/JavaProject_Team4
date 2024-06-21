@@ -10,7 +10,4 @@ public class AnimalShelter {
         pets.add(pet);
     }
 
-    public List<Pet> getPets() {
-        return pets;
-    }
 }

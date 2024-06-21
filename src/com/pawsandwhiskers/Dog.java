@@ -115,7 +115,7 @@ public class Dog extends Pet {
     @Override
     public String die() {
         String message = "";
-        if (getLife() <= 0) {
+        if (getLife() <= 0 || getHungerThirst() >= 100) {
             try {
                 for (String line : Files.readAllLines(Path.of("resources/grave.txt"))) {
                     System.out.println(line);

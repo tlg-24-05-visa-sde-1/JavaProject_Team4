@@ -141,8 +141,20 @@ public class AnimalShelterController {
                     System.out.println("8. Check your pet's status");
                     System.out.println("9. Exit");
                 }
+                int choice = 0;
+                boolean validInput = false;
 
-                int choice = prompter.promptForInt();
+                while (!validInput) {
+                    try {
+                        choice = prompter.promptForInt();
+                        validInput = true;
+                    } catch (InputMismatchException e) {
+                        System.out.println("Invalid entry. Please enter a number.");
+                        prompter.promptForString(); // Clear the invalid input
+                    }
+                }
+
+                //int choice = prompter.promptForInt();
 
                 if (!isCat) {
                     switch (choice) {
