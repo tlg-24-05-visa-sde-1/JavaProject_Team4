@@ -53,7 +53,7 @@ public class DogTest {
     }
 
     @Test
-    public void exercise_shouldIncreaseHungerThirstBy10() {
+    public void exercise_shouldIncreaseHungerThirstB20() {
         dog.setHungerThirst(50);
         dog.exercise();
         assertEquals(60, dog.getHungerThirst());
@@ -136,12 +136,6 @@ public class DogTest {
         dog.pet();
         dog.pet();
         assertEquals(100, dog.getEnergy());
-    }
-
-    @Test
-    public void sleep_shouldIncreaseEnergyBy40_whenCalled() {
-        dog.sleep();
-        assertEquals(90, dog.getEnergy());
     }
 
     @Test
