@@ -56,7 +56,7 @@ public class DogTest {
     public void exercise_shouldIncreaseHungerThirstB20() {
         dog.setHungerThirst(50);
         dog.exercise();
-        assertEquals(60, dog.getHungerThirst());
+        assertEquals(70, dog.getHungerThirst());
     }
 
     @Test
