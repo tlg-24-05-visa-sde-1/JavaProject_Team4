@@ -257,7 +257,9 @@ public class AnimalShelterController {
 
                 if (newPet.getLife() <= 0) {
                     System.out.println(newPet.die());
+                    System.out.println();
                     System.out.println("Thanks for playing!  Next time, take a little better care of your pet;)");
+                    System.out.println();
                     running = false;
                 }
             } catch (Exception e) {
